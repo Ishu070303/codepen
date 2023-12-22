@@ -6,6 +6,7 @@ import { UserAuthInput } from "../components";
 import { FaEnvelope, FaGithub } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
+import { signInWithGoogle } from "../utils/helpers";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -100,6 +101,7 @@ const SignUp = () => {
 
           {/* sign in with google */}
           <motion.div
+            onClick={signInWithGoogle}
             whileTap={{ scale: 0.9 }}
             className="flex items-center justify-center gap-3 bg-[rgba(256,256,256,0.2)] backdrop-blur-md w-full py-3 rounded-xl
                 hover:bg-[rgba(256,256,256,0.4)] cursor-pointer"
