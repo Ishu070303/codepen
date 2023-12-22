@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Logo } from '../assets';
+import { motion } from 'framer-motion';
 
 import { UserAuthInput } from '../components';
 import { FaEnvelope } from 'react-icons/fa';
@@ -9,6 +10,8 @@ const SignUp = () => {
 
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
+  const [ getEmailValidation, setGetEmailValidation ] = useState(false);
+  const [ isLogin, setIsLogin ] = useState(false)
 
   return (
     <div className='w-full py-8'>
@@ -27,16 +30,17 @@ const SignUp = () => {
                 {/* email */}
                 <UserAuthInput 
                 label="Email" 
-                placeHolder="Email Here" 
+                placeHolder="Email" 
                 isPass={false} 
                 setStateFunction={setEmail} 
-                Icon={FaEnvelope} 
+                Icon={FaEnvelope}
+                setGetEmailValidation={setGetEmailValidation} 
                 />
 
                 {/* password */}
                 <UserAuthInput 
                 label="Password" 
-                placeHolder="Password Here" 
+                placeHolder="Password" 
                 isPass={true}
                 setStateFunction={setPassword} 
                 Icon={MdPassword} 
@@ -45,10 +49,55 @@ const SignUp = () => {
                 {/* alert section */}
 
                 {/* login button */}
+                { !isLogin ? (
+                     <motion.div
+                     whileTap={{ scale: 0.9 }}
+                     className='flex items-center justify-center w-full py-3 
+                     rounded-xl hover:bg-emerald-400 cursor-pointer bg-emerald-500'>
+                         <p className='text-xl text-white'>Sign Up</p>
+                     </motion.div>
+                ) : (
+                    <motion.div
+                    whileTap={{ scale: 0.9 }}
+                    className='flex items-center justify-center w-full py-3 
+                    rounded-xl hover:bg-emerald-400 cursor-pointer bg-emerald-500'>
+                        <p className='text-xl text-white'>Login</p>
+                    </motion.div>
+                )}
+
+                {/* account text section */}
+                {!isLogin ? (
+                    <p className='text-sm text-gray-400 flex items-center justify-center gap-3'>
+                    Alreay Have an account !{" "}
+                    <span onClick={() => setIsLogin(!isLogin)} className='text-emerald-500 cursor-pointer'>
+                        Login Here
+                    </span>
+                </p>
+                ) : (
+                    <p className='text-sm text-gray-400 flex items-center justify-center gap-3'>
+                    Doesn't Have an account !{" "} 
+                    <span onClick={() => setIsLogin(!isLogin)}  className='text-emerald-500 cursor-pointer'>
+                        Create Here
+                    </span>
+                </p>
+                )}
 
                 {/* or section */}
-
+                <div className='flex items-center justify-center gap-12'>
+                    <div className='h-[1px] bg-[rgba(256,256,256,0.2)] rounded-md w-24'></div>
+                    <p className='text-sm text-[rgba(256,256,256,0.2)]'>OR</p>
+                    <div className='h-[1px] bg-[rgba(256,256,256,0.2)] rounded-md w-24'></div>
+                </div>
+                
                 {/* sign in with google */}
+
+
+                {/* or section */}
+                <div className='flex items-center justify-center gap-12'>
+                    <div className='h-[1px] bg-[rgba(256,256,256,0.2)] rounded-md w-24'></div>
+                    <p className='text-sm text-[rgba(256,256,256,0.2)]'>OR</p>
+                    <div className='h-[1px] bg-[rgba(256,256,256,0.2)] rounded-md w-24'></div>
+                </div>
 
                 {/* sign in with github */}
             </div>
