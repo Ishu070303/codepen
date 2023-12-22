@@ -9,7 +9,7 @@ import { Projects, SignUp } from "../containers";
 
 const Home = () => {
   const [isSideMenu, setIsSideMenu] = useState(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
 
   return (
     <>
