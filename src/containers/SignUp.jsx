@@ -7,12 +7,25 @@ import { FaEnvelope, FaGithub } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
 import { signInWithGithub, signInWithGoogle } from "../utils/helpers";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../config/firebase.config";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [getEmailValidation, setGetEmailValidation] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
+
+  const createNewUser = async ( ) => {
+    if(getEmailValidation) {
+      await createUserWithEmailAndPassword(auth, email, password).then((userCred) => {
+        if(userCred){
+          console.log(userCred);
+        }
+      })
+      .catch((err) => console.log(err));
+    }
+  };
 
   return (
     <div className="w-full py-8">
@@ -53,6 +66,7 @@ const SignUp = () => {
           {/* login button */}
           {!isLogin ? (
             <motion.div
+              onClick={createNewUser}
               whileTap={{ scale: 0.9 }}
               className="flex items-center justify-center w-full py-3 
                      rounded-xl hover:bg-emerald-400 cursor-pointer bg-emerald-500"

@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { FaEnvelope, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const UserAuthInput = ({ 
@@ -19,7 +19,7 @@ const UserAuthInput = ({
     setValue(e.target.value);
     setStateFunction(e.target.value);
 
-    if(placeHolder === "Email Here"){
+    if(placeHolder === "Email"){
         const emailRegex = /^[^\S@]+@[^\S@]+\.[^\S@]+$/;
         const status = emailRegex.test(value);
         setIsEmailValid(status);
@@ -31,10 +31,7 @@ const UserAuthInput = ({
     <div className='flex flex-col items-start justify-start gap-1'>
         <label className='text-sm text-gray-300'>{ label }</label>
         <div className={`flex items-center justify-center gap-3 w-full md:w-96 rounded-md px-4 py-1 bg-gray-200 ${
-        !isEmailValid && 
-        placeHolder === "Email" && 
-        value.length > 0 && 
-        "border-2 border-red-500"
+        !isEmailValid && placeHolder === "Email" && value.length > 0 && "border-2 border-red-500"
         }`}
         >
             <Icon
@@ -56,13 +53,13 @@ const UserAuthInput = ({
              whileTap={{ scale: 0.9 }} 
              className='cursor-pointer'>
                 {showPass ? (
-                   <FaEye 
+                   <FaEyeSlash 
                    style={{ color: "#1E1F26" }} 
                    className='text-2xl'/>
                 ): (
-                    <FaEyeSlash 
-                    style={{ color: "#1E1F26" }} 
-                    className='text-2xl'/>
+                  <FaEye 
+                  style={{ color: "#1E1F26" }} 
+                  className='text-2xl'/>
                 )}
              </motion.div>
            )}
