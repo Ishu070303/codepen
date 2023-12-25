@@ -19,7 +19,7 @@ const SignUp = () => {
   const [ alert, setAlert ] = useState(false);
   const [ alertMess, setAlertMess ] = useState("");
 
-  const createNewUser = async ( ) => {
+  const createNewUser = async () => {
     if(getEmailValidation) {
       await createUserWithEmailAndPassword(auth, email, password).then((userCred) => {
         if(userCred){
@@ -55,7 +55,7 @@ const SignUp = () => {
         setInterval(() => {
           setAlert(false);
         }, 4000);
-        
+
       });
     };
   };
@@ -95,16 +95,7 @@ const SignUp = () => {
           />
 
           {/* alert section */}
-          <AnimatePresence>
-            {alert && (
-              <motion.p 
-              key={"AlertMessage"}
-              {...FadeInOut}
-              className="text-red-400 text-sm">
-                {alertMess}
-              </motion.p>
-            )}
-          </AnimatePresence>
+          
 
           {/* login button */}
           {!isLogin ? (
@@ -118,7 +109,6 @@ const SignUp = () => {
             </motion.div>
           ) : (
             <motion.div
-              onClick={loginWithEmailAndPassword}
               whileTap={{ scale: 0.9 }}
               className="flex items-center justify-center w-full py-3 
                     rounded-xl hover:bg-emerald-400 cursor-pointer bg-emerald-500"
