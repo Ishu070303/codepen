@@ -3,12 +3,12 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDUWdOANwsPKl78rMvLAzgg_ysr7kST-c8",
-    authDomain: "codepen-d7387.firebaseapp.com",
-    projectId: "codepen-d7387",
-    storageBucket: "codepen-d7387.appspot.com",
-    messagingSenderId: "725271468244",
-    appId: "1:725271468244:web:64565e75d138252f130341"
+    apiKey: "AIzaSyAZSyHh71DEXq_eKZsrVmTu8U1hYdsw744",
+    authDomain: "codepen-d2e59.firebaseapp.com",
+    projectId: "codepen-d2e59",
+    storageBucket: "codepen-d2e59.appspot.com",
+    messagingSenderId: "408151960754",
+    appId: "1:408151960754:web:69dafacba30ee5f515adab",
   };
 
 
